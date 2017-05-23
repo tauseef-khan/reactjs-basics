@@ -10,11 +10,6 @@ import { Footer } from "./components/Footer";
 
 class App extends React.Component {
 	render() {
-		var user = {
-			name: "TK",
-			hobbies: ["Sports","Baking"]
-		};
-
 		//return what needs to be rendered
 		return(
 			<div className="container">
@@ -25,14 +20,14 @@ class App extends React.Component {
 				</div>
 				<div className="row">
 					<div className="col-xs-10 col-xs-offset-1">
-						<Home name={"Bob"} age={100} user={user}>
-							<p>This is a paragraph demonstrates passing of information using props INDIRECTLY</p>
-						</Home>
+						<Home name={"Bob"} initialAge={100} />
 					</div>
 				</div>
 				<div className="row">
 					<div className="col-xs-10 col-xs-offset-1">
-						<Footer/>
+						<Footer year={2017} author={"Tauseef Khan"}>
+							<p>Passing information indirectly again</p>
+						</Footer>
 					</div>
 				</div>
 			</div>

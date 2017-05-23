@@ -4,8 +4,16 @@ export class Footer extends React.Component {
 	render() {
 		return (
 			<div>
-				<p>Copyright 2017</p>
+				<hr/>
+				<p>Copyright {this.props.year} - {this.props.author}</p>
+				{this.props.children}
 			</div>
-		)
+		);
 	}
 }
+
+Footer.propTypes = {
+	year: React.PropTypes.number,
+	author: React.PropTypes.string,
+	children: React.PropTypes.element.isRequired
+};
