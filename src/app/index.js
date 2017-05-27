@@ -13,7 +13,8 @@ class App extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			homeLink: "Home"
+			homeLink: "Home",
+			secondLink: "Second"
 		};
 	}
 
@@ -27,18 +28,24 @@ class App extends React.Component {
 		});
 	}
 
+	onChangeLinkName2(newName){
+		this.setState({
+			secondLink: newName
+		});
+	}
+
 	render() {
 		//return what needs to be rendered
 		return(
 			<div className="container">
 				<div className="row">
 					<div className="col-xs-10 col-xs-offset-1">
-						<Header homeLink={this.state.homeLink}/>
+						<Header homeLink={this.state.homeLink} secondLink={this.state.secondLink}/>
 					</div>
 				</div>
 				<div className="row">
 					<div className="col-xs-10 col-xs-offset-1">
-						<Home name={"Bob"} initialAge={100} greet={this.onGreet} changeLink={this.onChangeLinkName.bind(this)} />
+						<Home name={"Bob"} initialAge={100} greet={this.onGreet} changeLink={this.onChangeLinkName.bind(this)} initialLinkName={this.state.homeLink} changeLink2={this.onChangeLinkName2.bind(this)} secondLinkName={this.state.secondLink}/>
 					</div>
 				</div>
 				<div className="row">
