@@ -14,7 +14,8 @@ class App extends React.Component {
 		super();
 		this.state = {
 			homeLink: "Home",
-			secondLink: "Second"
+			secondLink: "Second",
+			homeMounted: true
 		};
 	}
 
@@ -34,7 +35,27 @@ class App extends React.Component {
 		});
 	}
 
+	onChangeHomeMounted() {
+		this.setState({
+			homeMounted: !this.state.homeMounted
+		});
+	}
+
 	render() {
+		let homeCmp = "";
+		if(this.state.homeMounted) {
+			homeCmp = (
+				<Home 
+					name={"Bob"} 
+					initialAge={100} 
+					greet={this.onGreet} 
+					changeLink={this.onChangeLinkName.bind(this)} 
+					initialLinkName={this.state.homeLink} 
+					changeLink2={this.onChangeLinkName2.bind(this)} 
+					secondLinkName={this.state.secondLink}/>
+			);
+		}
+
 		//return what needs to be rendered
 		return(
 			<div className="container">
@@ -45,7 +66,12 @@ class App extends React.Component {
 				</div>
 				<div className="row">
 					<div className="col-xs-10 col-xs-offset-1">
-						<Home name={"Bob"} initialAge={100} greet={this.onGreet} changeLink={this.onChangeLinkName.bind(this)} initialLinkName={this.state.homeLink} changeLink2={this.onChangeLinkName2.bind(this)} secondLinkName={this.state.secondLink}/>
+						{homeCmp}
+					</div>
+				</div>
+				<div className="row">
+					<div className="col-xs-10 col-xs-offset-1">
+						<button onClick={this.onChangeHomeMounted.bind(this)} className="btn btn-primary">(Un)mount home component</button>
 					</div>
 				</div>
 				<div className="row">

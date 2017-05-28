@@ -16,6 +16,50 @@ export class Home extends React.Component {
 				status: 1
 			})
 		},3000);
+		console.log("constructor");
+	}
+
+	componentWillMount() {
+		//first method executed in the component lifecycle hook
+		console.log("component will mount");
+	}
+
+	componentDidMount() {
+		//second method executed in the component lifecycle hook
+		console.log("component did mount");
+	}
+
+	componentWillRecieveProps(nextProps) {
+		//third method executed in the component lifecycle hook
+		console.log("component will recieve props", nextProps);
+	}
+
+	shouldComponentUpdate(nextProps, nextState) {
+		//fourth method executed in the component lifecycle hook
+		console.log("should component update", nextProps, nextProps);
+
+		//block the rendering (updates) of state after it changes to 1 because returning flase doesn;t execute methods below (5th, 6th, 7th)
+		//if(nextState.status === 1) {
+		//	return false;
+		//}
+
+		//to continue return 'true'
+		return true;
+	}
+
+	componentWillUpdate(nextProps, nextState) {
+		//fifth method executed in the component lifecycle hook
+		console.log("component will update", nextProps, nextState);
+	}
+
+	componentDidUpdate(prevProps, prevState) {
+		//sixth method executed in the component lifecycle hook
+		console.log("component did update", prevProps, prevState);
+	}
+
+	componentWillUnmount() {
+		//seventh method executed in the component lifecycle hook
+		console.log("component will unmount");
 	}
 
 	onMakeOlder() {
